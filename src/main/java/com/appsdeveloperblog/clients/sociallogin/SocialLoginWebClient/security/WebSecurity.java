@@ -27,6 +27,7 @@ public class WebSecurity {
 	                .permitAll()
 	                .anyRequest()
 	                .authenticated()
+
 	    )
 	    .oauth2Login(Customizer.withDefaults())
 	    .logout(logout -> logout
@@ -43,7 +44,7 @@ public class WebSecurity {
 	private OidcClientInitiatedLogoutSuccessHandler oidcLogoutSuccessHandler() {
 		OidcClientInitiatedLogoutSuccessHandler successHandler = new OidcClientInitiatedLogoutSuccessHandler(
 				clientRegistrationRepository);
-		successHandler.setPostLogoutRedirectUri("http://localhost:8080/");
+		successHandler.setPostLogoutRedirectUri("http://localhost:8000/");  //keycloak server
 		return successHandler;
 	}
 
